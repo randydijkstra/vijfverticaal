@@ -9,11 +9,11 @@ var GameEngine = ( function( window, undefined ) {
         {
           'word' : 'universiteit',
           'alternatives' : ['school', 'gemeentehuis', 'buurthuis']
-        }
+        },
         {
           'word' : 'foto',
           'alternatives' : ['video', 'panorama', 'polaroid']
-        }
+        },
         {
           'word' : 'zwart',
           'alternatives' : ['bruin', 'grijs', 'paars']
