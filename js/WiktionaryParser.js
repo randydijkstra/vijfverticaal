@@ -55,4 +55,4 @@ var WiktionaryParser = ( function( window, undefined ) {
 
   return WiktionaryParser;
   
-} )( 'window' );
+} )( window );
