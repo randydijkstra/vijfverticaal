@@ -38,10 +38,20 @@ var app = window.app = {};
 			if (fn.filterWord(word).length > 2) {
 			
 				var elementToAdd = $("<span class=\"gameWord\">");
-				element.append(elementToAdd.text(word));
+				
+				var wordToAdd = "";
+				
+				for(var i = 0; i < word.length; i++) {
+					
+					wordToAdd += word[i] + "<span style=\"position:absolute; left:-9999px;\">.</span>";
+					
+				}
+				
+				element.append(elementToAdd.html(wordToAdd));
 				elementToAdd.after("<span> </span>");
 				
 				elementToAdd.attr('data-word', fn.filterWord(word).toLowerCase());
+				elementToAdd.attr('data-originalword', word);
 				
 			} else {
 				
@@ -57,8 +67,8 @@ var app = window.app = {};
 			word = word.replace('.', '');
 			word = word.replace(',', '');
 			word = word.replace(':', '');
-			//word = word.replace('\'', '');
-			//word = word.replace('\'', '');
+			word = word.replace('\'', '');
+			word = word.replace('\'', '');
 			word = word.replace('"', '');
 			word = word.replace('"', '');
 			word = word.replace('*', '');
@@ -102,7 +112,7 @@ var app = window.app = {};
 			
 			var allWords = $('.gameWord');			
 			
-			return allWords.eq(fn.randomFrom(allWords)).text();
+			return allWords.eq(fn.randomFrom(allWords)).attr('data-originalword');
 								
 		},
 		playNewWord: function(word) {
@@ -186,6 +196,7 @@ var app = window.app = {};
 			// Wrap all articale words in a span
 			detailContentElement.find('p').each(function(index) {
 				var articleElement = $(this);
+				articleElement.find('.label').remove();
 				articleElement.find('strong').remove();
 				var text = fn.replaceAll('.', '. ', articleElement.text());		
 				var words = text.split(" ");	
