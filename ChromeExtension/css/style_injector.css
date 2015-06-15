@@ -1,46 +1,66 @@
 #gameOverlay {
 	
-	background: rgba(255, 255, 255, 0.90);
+	background: rgba(0, 0, 0, 0.9);
 	
 	position: fixed;
 	
-	height: 100%;
 	width: 100%;
 	
 	z-index: 9999;
 	
 }
 
-#gameOverlay .gameBlock {
+#gameOverlay .holder {
 	
-	display: none;
+	margin: 0 auto;
+	padding: 20px;
 	
-	margin: 100px auto;
+	width: 75%;
 	
-	background: #fff;
-	
-	border-radius: 10px;
-	
-	max-width: 400px;
-	
-	padding: 40px;
+	overflow: hidden;
 	
 }
 
-#gameOverlay .gameBlock h1 {
+#gameOverlay .holder .left {
 	
-	font-size: 23px;
-	margin: 0 0 20px 0;
+	width: 250px;
+	
+	float: left;
 	
 }
 
-#gameOverlay .gameBlock .gameWordButton {
+#gameOverlay .holder .right {
+	
+	width: 400px;
+	
+	float: right;
+	
+}
+
+#gameOverlay .holder .text {
+	
+	padding: 10px;
+	
+	color: #fff;
+	
+	font-size: 14px;
+	font-weight: bold;
+	
+}
+
+#gameOverlay .holder .text.seconds {
+	
+	padding: 20px 10px 10px;
+	
+	font-size: 12px;
+	
+}
+
+#gameOverlay .holder .wordButton {
 	
 	border-radius: 5px;
 	
 	padding: 10px;
-	
-	margin: 0 0 10px 0;
 	
 	background-color: #be1414;
 	
@@ -48,20 +68,6 @@
 	
 	font-size: 16px;
 	font-weight: bold;
-	
-	cursor: pointer;
-	
-}
-
-#gameOverlay .gameBlock .gameWordButton:hover {
-	
-	background-color: #383838;
-	
-}
-
-#gameOverlay .gameBlock .gameWordButton:last-of-type {
-	
-	margin: 0;
 	
 }
 
@@ -87,6 +93,12 @@
 	
 }
 
+.gameWord {
+	
+	cursor: pointer;
+	
+}
+
 #playTheGameButton span {
 	
 	margin: 5px 0 0 0;
@@ -105,38 +117,8 @@ span.gameWord {
 	
 }
 
-span.gameWord.playable {
+span.gameWord.fastSelected {
 	
-	display: inline-block;
-	
-	background-color: #be1414;
-	
-	border-radius: 5px;
-	padding: 5px;
-	margin: 2px;
-	
-	color: #fff;
-	
-	cursor: pointer;
+	color: #be1414;
 	
 }
-
-span.gameWord.playable.correct {
-	
-	background-color: #65bf16;
-	
-}
-
-/*
-span.gameWord.playable:before {
-	
-	display: block;
-	
-	float: left;
-	
-	content: "*";
-	
-	margin: 0 5px 0 0;
-	
-}
-*/
