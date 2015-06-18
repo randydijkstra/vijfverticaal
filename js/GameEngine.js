@@ -1,6 +1,8 @@
-var GameEngine = ( function( JQ, window, undefined ) {
+var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
 
   function GameEngine ( options ) {
+
+    var wiktionary_query = 'http://nl.wiktionary.org/w/api.php?action=parse&prop=wikitext&page={{query}}&format=json';
 
     // Default settings 
     var defaults = {
@@ -68,8 +70,12 @@ var GameEngine = ( function( JQ, window, undefined ) {
     }
 
 
-    this.run = function ( title, article, count ) {
+
+    this.run = function ( title, article, count, callback ) {
       
+      callback = callback || $.noop;
+      var parser = new WiktionaryParser().parse;
+
       var allwords = getWords( title ).concat( getWords( article ) );
       var filtered = banWords( allwords, settings.bannedwords );
       var occurrence_array = occurrence( filtered );
@@ -83,17 +89,24 @@ var GameEngine = ( function( JQ, window, undefined ) {
       });
 
       var words = [];
-
-      for(var i = 0; i < target.length; i++) {
-        
-        words.push({
-          word : target[i],
-          alternatives : []
-        });
-
+      var requests = []; // hold ajax request
+      
+      for( var i = 0; i < target.length; i++ ) {
+        requests.push( JQ.ajax({url : wiktionary_query.replace('{{query}}',target[i]) } ));
       }
 
-      return words;
+      JQ.when.apply( JQ, requests ).done(function () {
+        JQ.each( requests, function ( n, data ) {
+          words.push( { 
+            word: data.responseJSON.parse.title,
+            alternatives : parser(data.responseJSON)
+          });
+        });
+
+        // run callback
+        callback(words)
+
+      });
 
     }
 
@@ -101,5 +114,5 @@ var GameEngine = ( function( JQ, window, undefined ) {
 
   return GameEngine;
   
-} )( jQuery, window );
+} )( jQuery, WiktionaryParser, window );
 
