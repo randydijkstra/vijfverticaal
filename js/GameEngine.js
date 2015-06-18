@@ -30,6 +30,7 @@ var GameEngine = ( function( window, undefined ) {
         }
         return extended;
     };
+    
     // apply 
     var settings = extend( defaults, options );
 
@@ -43,6 +44,12 @@ var GameEngine = ( function( window, undefined ) {
         return self.indexOf( value ) == index;
       });
     };
+
+    var banWords = function ( array, banned ) {
+      return array.filter( function( value, index, self ){
+        return banned.indexOf( value ) == -1;
+      });
+    }
 
 
     var occurrence = function ( array ) {
