@@ -31,7 +31,7 @@ var GameEngine = ( function( window, undefined ) {
         return extended;
     };
     // apply 
-    var settings = extend( defaults, settings );
+    var settings = extend( defaults, options );
 
     var getWords = function ( str ) {
       return str.toLowerCase().replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(' ');
