@@ -1,11 +1,11 @@
-var GameEngine = ( function( window, undefined ) {
+var GameEngine = ( function( JQ, window, undefined ) {
 
   function GameEngine ( options ) {
 
     // Default settings 
     var defaults = {
       bannedwords : [
-        'door', 'andere', 'veel','te','uit','ze','zij','hij','hem','in','die','naar','op','met','een','de','het','is','over','dit','dat','jij','je','jou','u','toen']
+        'door', 'andere', 'hier', 'waarom', 'en', 'veel','te','uit','ze','zij','hij','hem','in','die','naar','op','met','een','de','het','is','over','dit','dat','jij','je','jou','u','toen']
     };
 
     /**
@@ -30,19 +30,12 @@ var GameEngine = ( function( window, undefined ) {
         }
         return extended;
     };
-    
+
     // apply 
     var settings = extend( defaults, options );
 
     var getWords = function ( str ) {
       return str.toLowerCase().replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(' ');
-    };
-
-
-    var unique = function ( array ) {
-      return array.filter(function( value, index, self ){
-        return self.indexOf( value ) == index;
-      });
     };
 
     var banWords = function ( array, banned ) {
@@ -66,25 +59,39 @@ var GameEngine = ( function( window, undefined ) {
           prev = array[ i ];
       }
 
-      return [ a, b ];
+      var o = [];
+      for( var i = 0; i < b.length; i++ ) {
+        o.push([b[i],a[i]]);
+      }
+
+      return o;
     }
 
-    this.run = function ( title, article, count ) {
 
-      var words = [
-        {
-          'word' : 'universiteit',
-          'alternatives' : ['school', 'gemeentehuis', 'buurthuis']
-        },
-        {
-          'word' : 'foto',
-          'alternatives' : ['video', 'panorama', 'polaroid']
-        },
-        {
-          'word' : 'zwart',
-          'alternatives' : ['bruin', 'grijs', 'paars']
-        }
-      ];
+    this.run = function ( title, article, count ) {
+      
+      var allwords = getWords( title ).concat( getWords( article ) );
+      var filtered = banWords( allwords, settings.bannedwords );
+      var occurrence_array = occurrence( filtered );
+      
+      var sorted_occurence = occurrence_array.sort( function( a, b ) {
+        return a[0] - b[0];
+      }).reverse();
+      
+      var target = sorted_occurence.splice( 0, count ).map( function( item ) {
+        return item[1];
+      });
+
+      var words = [];
+
+      for(var i = 0; i < target.length; i++) {
+        
+        words.push({
+          word : target[i],
+          alternatives : []
+        });
+
+      }
 
       return words;
 
@@ -94,4 +101,5 @@ var GameEngine = ( function( window, undefined ) {
 
   return GameEngine;
   
-} )( window );
+} )( jQuery, window );
+
