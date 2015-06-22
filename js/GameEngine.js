@@ -34,7 +34,7 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
           } else {
             words.push({
               word : data.responseJSON.parse.title,
-              hassynonym : true
+              hassynonym : false
             });
           }
 
