@@ -42,7 +42,7 @@ var WiktionaryParser = ( function( window, undefined ) {
          parsewords[i] = parsewords[i].replace(/[0-9\.,-\/#!$%\^&\*;:{}=\-_`~()\[\]]/g,'');
          //console.log(text.split(parsewords[i])[1].split('{{')[0].replace(/[0-9\.,-\/#!$%\^&\*;:{}=\-_`~()\[\]]/g,'').replace(/\n/g,' ').split(' '));
         try {
-          output[parsewords[i]] = text.split(parsewords[i])[1].split('{{')[0].replace(/\[\[([a-z]+)\:([a-z]*)\]\]/gi,'').replace(/[0-9\.,-\/#!$%\^&\*;:{}=\-_`~()\[\]]/g,'').replace(/\n/g,' ').split(' ');
+          output[parsewords[i]] = text.split(parsewords[i])[1].split('{{')[0].replace(/\[\[([a-z\-]+)\:([a-z\-]*)\]\]/gi,'').replace(/[0-9\.,-\/#!$%\^&\*;:{}=\-_`~()\[\]]/g,'').replace(/\n/g,' ').split(' ');
           output[parsewords[i]] = banWordsfromArray(output[parsewords[i]],['formeler','informeler','']);
         } catch(ex) {
           output[parsewords[i]] = '';
