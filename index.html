@@ -1,8 +1,19 @@
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title></title>
 	<link rel="stylesheet" href="css/style.css">
+	
+	<script src="ChromeExtension/js/library/jquery-1.11.1.min.js"></script>
+	<script src="js/WiktionaryParser.js"></script>
+	<script src="js/GameEngine.js"></script>
+
+	<script>
+		var g = new GameEngine();
+		g.run(['hoi'], function(data){
+			console.log(data);
+		});
+	</script>
 </head>
 <body>
 	<div id="wrapper">
