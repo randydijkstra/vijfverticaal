@@ -1,25 +1,48 @@
-var GameEngine = ( function( window, undefined ) {
+var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
 
-  function GameEngine () {
+  function GameEngine ( options ) {
 
-    this.run = function ( title, article, count ) {
+    var wiktionary_query = 'http://nl.wiktionary.org/w/api.php?action=parse&prop=wikitext&page={{query}}&format=json';
 
-      var words = [
-        {
-          'word' : 'universiteit',
-          'alternatives' : ['school', 'gemeentehuis', 'buurthuis']
-        },
-        {
-          'word' : 'foto',
-          'alternatives' : ['video', 'panorama', 'polaroid']
-        },
-        {
-          'word' : 'zwart',
-          'alternatives' : ['bruin', 'grijs', 'paars']
-        }
-      ];
 
-      return words;
+    this.run = function ( array, callback ) {
+      
+      callback = callback || JQ.noop;
+      var parser = new WiktionaryParser().parse;
+
+      var requests = []; // hold ajax request
+      var words = [];
+      var parse;
+
+      for( var i = 0; i < array.length; i++ ) {
+        requests.push( JQ.ajax({url : wiktionary_query.replace('{{query}}',array[i]) } ));
+      }
+
+
+      JQ.when.apply( JQ, requests ).done( function () {
+        
+        JQ.each( requests, function ( n, data ) {
+          parse = parser(data.responseJSON);
+          if(parse.syn.length > 0)
+          {
+            words.push({
+              word : data.responseJSON.parse.title,
+              hasSynonyms : true,
+              synonyms : parse.syn
+            });
+          } else {
+            words.push({
+              word : data.responseJSON.parse.title,
+              hasSynonyms : false
+            });
+          }
+
+        });
+
+        // run callback
+        callback(words)
+
+      });
 
     }
 
@@ -27,4 +50,4 @@ var GameEngine = ( function( window, undefined ) {
 
   return GameEngine;
   
-} )( window );
+} )( jQuery, WiktionaryParser, window );
