@@ -4,6 +4,13 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
 
     var wiktionary_query = 'http://nl.wiktionary.org/w/api.php?action=parse&prop=wikitext&page={{query}}&format=json';
 
+    var bannedwords = ['voor','achter','door','andere','veel','te','uit','ze','zij','hij','hem','in','die','naar','op','met','een','de','het','is','over','dit','dat','jij','je','jou','u','toen'];
+
+    var banWordsfromArray = function ( arr, bannedarray ) {
+      return arr.filter( function ( value, index, self ) {
+        return bannedarray.indexOf( value ) == -1;
+      });
+    };
 
     this.run = function ( array, callback ) {
       
@@ -13,6 +20,9 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
       var requests = []; // hold ajax request
       var words = [];
       var parse;
+
+      //apply filter of banned words
+      array = banWordsfromArray( array, bannedwords );
 
       for( var i = 0; i < array.length; i++ ) {
         requests.push( JQ.ajax({url : wiktionary_query.replace('{{query}}',array[i]) } ));
