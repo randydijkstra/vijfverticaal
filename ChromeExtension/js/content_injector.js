@@ -1,6 +1,6 @@
 var app = window.app = {};
 
-(function() {
+(function(undefined) {
 	
 	app.articleElement = undefined;
 	app.title = undefined;
