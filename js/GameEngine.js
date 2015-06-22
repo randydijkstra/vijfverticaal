@@ -23,7 +23,6 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
         
         JQ.each( requests, function ( n, data ) {
           parse = parser(data.responseJSON);
-          console.log(data.responseJSON);
           if(parse.syn.length > 0)
           {
             words.push({
