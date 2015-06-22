@@ -38,10 +38,27 @@ var app = window.app = {};
 			if (fn.filterWord(word).length > 2) {
 			
 				var elementToAdd = $("<span class=\"gameWord\">");
+<<<<<<< HEAD
 				element.append(elementToAdd.text(word));
 				elementToAdd.after("<span> </span>");
 				
 				elementToAdd.attr('data-word', fn.filterWord(word).toLowerCase());
+=======
+				
+				var wordToAdd = "";
+				
+				for(var i = 0; i < word.length; i++) {
+					
+					wordToAdd += word[i] + "<span style=\"position:absolute; left:-9999px;\">.</span>";
+					
+				}
+				
+				element.append(elementToAdd.html(wordToAdd));
+				elementToAdd.after("<span> </span>");
+				
+				elementToAdd.attr('data-word', fn.filterWord(word).toLowerCase());
+				elementToAdd.attr('data-originalword', word);
+>>>>>>> Chrome
 				
 			} else {
 				
@@ -57,8 +74,13 @@ var app = window.app = {};
 			word = word.replace('.', '');
 			word = word.replace(',', '');
 			word = word.replace(':', '');
+<<<<<<< HEAD
 			//word = word.replace('\'', '');
 			//word = word.replace('\'', '');
+=======
+			word = word.replace('\'', '');
+			word = word.replace('\'', '');
+>>>>>>> Chrome
 			word = word.replace('"', '');
 			word = word.replace('"', '');
 			word = word.replace('*', '');
@@ -102,7 +124,11 @@ var app = window.app = {};
 			
 			var allWords = $('.gameWord');			
 			
+<<<<<<< HEAD
 			return allWords.eq(fn.randomFrom(allWords)).text();
+=======
+			return allWords.eq(fn.randomFrom(allWords)).attr('data-originalword');
+>>>>>>> Chrome
 								
 		},
 		playNewWord: function(word) {
@@ -186,6 +212,10 @@ var app = window.app = {};
 			// Wrap all articale words in a span
 			detailContentElement.find('p').each(function(index) {
 				var articleElement = $(this);
+<<<<<<< HEAD
+=======
+				articleElement.find('.label').remove();
+>>>>>>> Chrome
 				articleElement.find('strong').remove();
 				var text = fn.replaceAll('.', '. ', articleElement.text());		
 				var words = text.split(" ");	

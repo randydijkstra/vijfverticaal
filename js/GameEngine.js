@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
 
   function GameEngine ( options ) {
@@ -8,6 +9,16 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
     var defaults = {
       bannedwords : [
         'door', 'andere', 'hier', 'waarom', 'en', 'veel','te','uit','ze','zij','hij','hem','in','die','naar','op','met','een','de','het','is','over','dit','dat','jij','je','jou','u','toen']
+=======
+var GameEngine = ( function( window, undefined ) {
+
+  function GameEngine ( options ) {
+
+    // Default settings 
+    var defaults = {
+      bannedwords : [
+        'door', 'andere', 'veel','te','uit','ze','zij','hij','hem','in','die','naar','op','met','een','de','het','is','over','dit','dat','jij','je','jou','u','toen']
+>>>>>>> Chrome
     };
 
     /**
@@ -32,19 +43,33 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
         }
         return extended;
     };
+<<<<<<< HEAD
 
     // apply 
     var settings = extend( defaults, options );
+=======
+    // apply 
+    var settings = extend( defaults, settings );
+>>>>>>> Chrome
 
     var getWords = function ( str ) {
       return str.toLowerCase().replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(' ');
     };
 
+<<<<<<< HEAD
     var banWords = function ( array, banned ) {
       return array.filter( function( value, index, self ){
         return banned.indexOf( value ) == -1;
       });
     }
+=======
+
+    var unique = function ( array ) {
+      return array.filter(function( value, index, self ){
+        return self.indexOf( value ) == index;
+      });
+    };
+>>>>>>> Chrome
 
 
     var occurrence = function ( array ) {
@@ -61,6 +86,7 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
           prev = array[ i ];
       }
 
+<<<<<<< HEAD
       var o = [];
       for( var i = 0; i < b.length; i++ ) {
         o.push([b[i],a[i]]);
@@ -107,6 +133,29 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
         callback(words)
 
       });
+=======
+      return [ a, b ];
+    }
+
+    this.run = function ( title, article, count ) {
+
+      var words = [
+        {
+          'word' : 'universiteit',
+          'alternatives' : ['school', 'gemeentehuis', 'buurthuis']
+        },
+        {
+          'word' : 'foto',
+          'alternatives' : ['video', 'panorama', 'polaroid']
+        },
+        {
+          'word' : 'zwart',
+          'alternatives' : ['bruin', 'grijs', 'paars']
+        }
+      ];
+
+      return words;
+>>>>>>> Chrome
 
     }
 
@@ -114,5 +163,9 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
 
   return GameEngine;
   
+<<<<<<< HEAD
 } )( jQuery, WiktionaryParser, window );
 
+=======
+} )( window );
+>>>>>>> Chrome
