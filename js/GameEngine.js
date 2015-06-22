@@ -27,13 +27,13 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
           {
             words.push({
               word : data.responseJSON.parse.title,
-              hassynonym : true,
+              hasSynonyms : true,
               synonyms : parse.syn
             });
           } else {
             words.push({
               word : data.responseJSON.parse.title,
-              hassynonym : false
+              hasSynonyms : false
             });
           }
 
