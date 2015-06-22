@@ -23,13 +23,13 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
         
         JQ.each( requests, function ( n, data ) {
           parse = parser(data.responseJSON);
-
+          console.log(data.responseJSON);
           if(parse.syn.length > 0)
           {
             words.push({
               word : data.responseJSON.parse.title,
               hassynonym : true,
-              synonyms : data.responseJSON.parse.syn
+              synonyms : parse.syn
             });
           } else {
             words.push({
@@ -37,7 +37,7 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
               hassynonym : true
             });
           }
-          
+
         });
 
         // run callback
