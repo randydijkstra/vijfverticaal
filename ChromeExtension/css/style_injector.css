@@ -1,0 +1,124 @@
+#gameOverlay {
+	
+	background: rgba(0, 0, 0, 0.9);
+	
+	position: fixed;
+	
+	width: 100%;
+	
+	z-index: 9999;
+	
+}
+
+#gameOverlay .holder {
+	
+	margin: 0 auto;
+	padding: 20px;
+	
+	width: 75%;
+	
+	overflow: hidden;
+	
+}
+
+#gameOverlay .holder .left {
+	
+	width: 250px;
+	
+	float: left;
+	
+}
+
+#gameOverlay .holder .right {
+	
+	width: 400px;
+	
+	float: right;
+	
+}
+
+#gameOverlay .holder .text {
+	
+	padding: 10px;
+	
+	color: #fff;
+	
+	font-size: 14px;
+	font-weight: bold;
+	
+}
+
+#gameOverlay .holder .text.seconds {
+	
+	padding: 20px 10px 10px;
+	
+	font-size: 12px;
+	
+}
+
+#gameOverlay .holder .wordButton {
+	
+	border-radius: 5px;
+	
+	padding: 10px;
+	
+	background-color: #be1414;
+	
+	color: #fff;
+	
+	font-size: 16px;
+	font-weight: bold;
+	
+}
+
+#playTheGameButton {
+	
+	margin: 0 0 20px 0;
+	
+	cursor: pointer;
+	
+	font-size: 14px;
+	
+	display: block;
+	
+	background: #a11f1f;
+	
+	padding: 15px;
+	
+	font-weight: bold;
+	
+	color: #fff;
+	
+	text-transform: uppercase;
+	
+}
+
+.gameWord {
+	
+	cursor: pointer;
+	
+}
+
+#playTheGameButton span {
+	
+	margin: 5px 0 0 0;
+	
+	font-size: 18px;
+	
+	display: block;
+	
+	color: #f9e106;
+	
+}
+
+span.gameWord {
+	
+	display: inline;
+	
+}
+
+span.gameWord.fastSelected {
+	
+	color: #be1414;
+	
+}
