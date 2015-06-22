@@ -23,18 +23,20 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
         
         JQ.each( requests, function ( n, data ) {
           parse = parser(data.responseJSON);
-          if(parse.syn.length > 0)
-          {
-            words.push({
-              word : data.responseJSON.parse.title,
-              hasSynonyms : true,
-              synonyms : parse.syn
-            });
-          } else {
-            words.push({
-              word : data.responseJSON.parse.title,
-              hasSynonyms : false
-            });
+          if(!parse.error){
+            if(parse.syn.length > 0)
+            {
+              words.push({
+                word : data.responseJSON.parse.title,
+                hasSynonyms : true,
+                synonyms : parse.syn
+              });
+            } else {
+              words.push({
+                word : data.responseJSON.parse.title,
+                hasSynonyms : false
+              });
+            }
           }
 
         });
