@@ -74,6 +74,8 @@ function wordClicked(event, element, word) {
 	// State 1
 	if (word == gameWordToFind_State1) {
 		
+		element.addClass("goodGuess");
+		
 		// Yes! You clicked the right word.		
 		gameWordsCorrect_State1 += 1;
 		
@@ -87,7 +89,11 @@ function wordClicked(event, element, word) {
 			startGame(2);		
 		}
 		
+		showMessage("Goed gedaan!", "green")
+		
 	} else {
+		
+		element.addClass("wrongGuess");
 		
 		clearTimeout(animationTimer_State1);
 		
@@ -103,7 +109,7 @@ function wordClicked(event, element, word) {
 		gameSeconds_State1 = (gameSeconds_State1 + 10);
 		
 		// TODO: ER WORDT EEN POPUP GETOOND DAT HET WOORD FOUT IS GERADEN, ER KOMEN 10+ SECONDEN BIJ ALS STRAF.
-		showMessage("Fout! +10 seconden")
+		showMessage("Fout! +10 seconden", "#970306")
 		
 	}
 	// End of state 1
@@ -113,12 +119,13 @@ function wordClicked(event, element, word) {
 	
 }
 
-function showMessage(message) {
+function showMessage(message, color) {
 	
 	clearTimeout(messageTimer);
 	
 	var messageElement = $('#messageHolder');
 	
+	messageElement.css('color', color);
 	messageElement.removeClass('animation').text(message);
 	
 	var messageHeight = messageElement.height();
