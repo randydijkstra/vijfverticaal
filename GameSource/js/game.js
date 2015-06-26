@@ -14,7 +14,7 @@ var gameWordToFind_State2 = ""; // Het woord dat de speler op 'dit' moment aan h
 var gameWordsCorrect_State1 = 0; // Hoeveel woorden zijn er correct geraden
 var gameWordsCorrect_State2 = 0; // Hoeveel woorden zijn er correct geraden
 var gameWordsWrong_State2 = 0; // Hoeveel woorden zijn er correct geraden
-var correctWordsBeforeStateChange_State1 = 3; // Woorden die goed moeten worden geraden voordat state 2 begint
+var correctWordsBeforeStateChange_State1 = 2; // Woorden die goed moeten worden geraden voordat state 2 begint
 var wordArray_State1 = new Array(); // Array bevat alle 'geraden' woorden
 var guessCounter = 0;
 var animationTimer_State1; // Niks aan doen, is een var om de timer later te cancelen
@@ -46,7 +46,9 @@ function stripWord(word) {
 	word = word.replace('*', '');
 	word = word.replace('?', '');
 	word = word.replace('!', '');
-
+	word = word.replace('#', '');
+	word = word.replace('&', '');
+	word = word.replace('%', '');
 	word = word.replace('(', '');
 	word = word.replace(')', '');
 	
@@ -73,14 +75,14 @@ function getRandomWord() {
   			//console.log('index: ' + i + ',value: ' + value);
   			if(value.hasSynonyms == true){
   				console.log("hasSynonyms == true");
-  				console.log("synonyms.length = "+value.synonyms.length);
+  				//console.log("synonyms.length = "+value.synonyms.length);
   				if (value.synonyms.length > 1) {
   					console.log("2 or more synonyms. Continue.");
   					if ($.inArray(wordToPlay, wordArray_State1) == -1)
 					{
 						searchGameWordTries = 0;
 						gameWordToFind_State1 = wordToPlay;
-						console.log("Word to play in arraycheck: "+wordToPlay);
+						//console.log("Word to play in arraycheck: "+wordToPlay);
 						result = wordToPlay;
 				 	}else{
 				 		if(searchGameWordTries > 10){
@@ -201,19 +203,29 @@ function wordClicked(event, element, word) {
 				console.log("corrent :)");
 				showMessage("Correct!", "green");
 				gameWordsCorrect_State2 += 1;
+
 				$('.goodGuess').each(function(index) {
-					if($(this).text() == element.text()){
-						$(this).addClass('s2goodGuess');
+					var ggElement = $(this);
+					var word = ggElement.attr('data-word');
+					console.log("Word to be edited: "+word);		
+					
+					if (word == gameWordToFind_State2) {
+						ggElement.addClass('s2goodGuess');
+						ggElement.css("color", "#FFFFFF");
+//						ggElement.removeClass('.goodGuess');
 					}
 				});
+				//element.addClass('s2goodGuess');
 			}else{
 				showMessage("Helaas... fout!", "#970306");
 				$('.goodGuess').each(function(index) {
-					console.log(this);
-					console.log(element.text());
-	
-					if($(this).text() == element.text()){
-						$(this).addClass('s2wrongGuess');
+					var ggElement = $(this);
+					var word = ggElement.attr('data-word');
+					console.log("Word to be edited: "+word);		
+					
+					if (word == gameWordToFind_State2) {
+						ggElement.addClass('s2wrongGuess');
+						ggElement.css("color", "#FFFFFF");
 					}
 				});
 				gameWordsWrong_State2 += 1;
@@ -232,7 +244,7 @@ function wordClicked(event, element, word) {
 /*
 * 	----- State 2 stuff here -----
 */
-function getWordFromWordArray(currentTurn){
+function getWordFromWordArray(currentTurn){//DEPRECATED
 	return wordArray_State1[(currentTurn-1)];
 }
 
@@ -251,14 +263,14 @@ function appendToOptions(word){
 	if(typeof wordToGuess === "string"){//Check if word is actually a string
 		//console.log("Running engine...");
 		gEngine.run([wordToGuess], function(data){
-			console.log(data);
+			//console.log(data);
 			$.each(data, function(i, value){
 	  			console.log('index: ' + i + ',value: ' + value);
 	  			if(value.hasSynonyms == true){
 	  				console.log("hasSynonyms == true");
 	  				$.each(value.synonyms, function(index, synonym){
-	  					console.log("Current synonym: "+synonym);
-	  					arrayOfSynonyms.push(synonym);
+	  					//console.log("Current synonym: "+synonym);
+	  					arrayOfSynonyms.push(stripWord(synonym));
 	  					console.log(arrayOfSynonyms);
 	  				});
 	  				shuffleArray(arrayOfSynonyms);
@@ -354,8 +366,10 @@ function startGame(state) {
 		startFaseTwo();
 				
 	} else if (state == 3){
-		alert("Gefeliciteerd! Spel uitgespeeld :)"); //TODO alert vervangen door sexy interface?
+		//alert("Gefeliciteerd! Spel uitgespeeld :)"); //TODO alert vervangen door sexy interface?
+		showMessage("Gefeliciteerd! U heeft het spel uitgespeeld");
 		console.log("End of game...");
+		gameState = 3;
 		//TODO: Laat eind scherm zien met scores
 	}
 

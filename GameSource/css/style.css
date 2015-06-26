@@ -159,12 +159,11 @@ a {
 }
 
 .isGameWord.goodGuess {
-	
 	background-color: #26b55f;
 	color: #fff;	
 	/*color: #26b55f;*/
 	border-radius: 8px;
-	padding: 1px;
+	padding: 3px;
 }
 .isGameWord.wrongGuess {
 	background-color: #b52644;
@@ -173,8 +172,9 @@ a {
 	padding: 3px;
 }
 .isGameWord.s2goodGuess{
-	color: #fff;
-	border: solid 1px #04a33D;
+	color: #FFFFFF;
+	padding: 1px;
+	border: solid 2px #03a33D;
 }
 .isGameWord.s2wrongGuess{
 	color: #fff;
