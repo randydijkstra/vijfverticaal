@@ -7,7 +7,7 @@ var messageTimer;
 // Hierboven zijn algemene timers, niks aan doen.
 
 // State 1 variables
-var searchGameWordTries = 0;
+var searchGameWordTries = 0; //search random word tries om infinite loop te voorkomen.
 var gameSeconds_State1 = 0; // Hoeveel seconden zijn er momenteel verstreken
 var gameWordToFind_State1 = ""; // Het woord dat de speler op 'dit' moment aan het zoeken is.
 var gameWordToFind_State2 = ""; // Het woord dat de speler op 'dit' moment aan het zoeken is.
@@ -54,40 +54,86 @@ function stripWord(word) {
 	
 }
 
+function putWordInScoreboard(word){
+	console.log("random word = " +word)
+	$('#score-board .left .wordButton').text(word);
+}
+
 function getRandomWord() {
 	
 	var wordSelector = $('.isGameWord'); 	
 	var randomInt = Math.floor(Math.random() * wordSelector.length);	
 	var getWordElement = wordSelector.eq(randomInt);
-	
 	var wordToPlay = getWordElement.attr('data-word');
+	console.log("word to check: "+wordToPlay)
 	
-	if ($.inArray(wordToPlay, wordArray_State1) == -1)
-	{
-		searchGameWordTries = 0;
-		gameWordToFind_State1 = wordToPlay;
-		return wordToPlay;
- 	}else{
- 		if(searchGameWordTries > 10){
- 			console.log("Cant find new word :(");
- 			return false;
- 		}else{
+	gEngine.run([wordToPlay], function(data){
+		var result = "";
+		$.each(data, function(i, value){
+  			//console.log('index: ' + i + ',value: ' + value);
+  			if(value.hasSynonyms == true){
+  				console.log("hasSynonyms == true");
+  				console.log("synonyms.length = "+value.synonyms.length);
+  				if (value.synonyms.length > 1) {
+  					console.log("2 or more synonyms. Continue.");
+  					if ($.inArray(wordToPlay, wordArray_State1) == -1)
+					{
+						searchGameWordTries = 0;
+						gameWordToFind_State1 = wordToPlay;
+						console.log("Word to play in arraycheck: "+wordToPlay);
+						result = wordToPlay;
+				 	}else{
+				 		if(searchGameWordTries > 10){
+				 			console.log("Cant find new word :(");
+				 			result = false;
+				 		}else{
+							searchGameWordTries += 1;
+							result = "retryOnceAgain";
+				 		}
+				 	}
+  				}else{
+  					console.log("not 2 or more synonyms. Retry.");
+  					result = "retryOnceAgain";
+  				}
+  			}else if(value.hasSynonyms == false){
+  				console.log("hasSynonyms == false");
+  				result = "retryOnceAgain";
+  			}
+		});
+		console.log("reslt = "+result);
+		//wordToPlay = result;
+		if(result == false){
+			//stuff should break here
+			console.log("Word =="+result);
+		}else if(result == "retryOnceAgain"){
+			console.log("word should be retryOnceAgain, is: "+result);
 			getRandomWord();
-			searchGameWordTries = searchGameWordTries + 1;
- 		}
- 	}
+		}else{
+			putWordInScoreboard(result);
+		}
+	});
+
+//	return word;
 }
 
 function getRandomWord_State1() {
-	
 	var word = getRandomWord();
+
 	if(word == false){
 		//stuff should break here
-	}else{
+		console.log("Word =="+word);
+	}else if(word == "retryOnceAgain"){
+		console.log("word should be retryOnceAgain, is: "+word);
+		getRandomWord_State1();
+	}
+	else{
+		console.log("random word = " +word)
 		$('#score-board .left .wordButton').text(word);
 		return word;
 	}		
 }
+
+
 
 function wordClicked(event, element, word) {
 	
@@ -107,7 +153,7 @@ function wordClicked(event, element, word) {
 				// Go to the next game state
 				startGame(2);		
 			}else{
-				getRandomWord_State1();
+				getRandomWord();
 			}
 			
 			showMessage("Goed gedaan!", "green");
@@ -178,8 +224,8 @@ function wordClicked(event, element, word) {
 			if((gameWordsCorrect_State2 + gameWordsWrong_State2) >= correctWordsBeforeStateChange_State1){
 				startGame(3);
 			} 
-		}
-	}	
+		} 
+	}	// End of state 2
 }
 
 
@@ -295,7 +341,7 @@ function startGame(state) {
 		gameState = 1;
 		gameTimer = setInterval(extraSecond, 1000);
 		
-		getRandomWord_State1();
+		getRandomWord();
 		
 	} else if (state == 2) {
 		gameState = 2;

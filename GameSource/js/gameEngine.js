@@ -5,7 +5,7 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
     var wiktionary_query = 'http://nl.wiktionary.org/w/api.php?action=parse&prop=wikitext&page={{query}}&format=json';
 
     var bannedwords = ['in','wij','aan','word','wordt','er','nog','bij','al','van','en','hun','hen','voor','achter','door','andere','veel','te','uit','ze','zij','hij','hem','in','die','naar','op','met','een','de','het','is','over','dit','dat','jij','je','jou','u','toen'];
-
+    
     var banWordsfromArray = function ( arr, bannedarray ) {
       return arr.filter( function ( value, index, self ) {
         return bannedarray.indexOf( value ) == -1;
