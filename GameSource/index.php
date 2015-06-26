@@ -20,8 +20,9 @@
 	<link rel="stylesheet" href="css/style.css">
 	
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/WiktionaryParser.js"></script>
+	<script type="text/javascript" src="js/gameEngine.js"></script>
 	<script type="text/javascript" src="js/game.js"></script>
-	<script type="text/javascript" src="js/GameEngine.js"></script>
 	
 </head>
 <body>
@@ -182,7 +183,14 @@
 		}
 		
 	}
-	
+	if ($isPlayingGame) {
+		echo 	'<div id="state2">'.
+					'<h3>Wat was het woord in het artikel?</h3>'.
+					'<div id="option1" class="option">Placeholder 1</div>'.
+					'<div id="option2" class="option">Placeholder 2</div>'.
+					'<div id="option3" class="option">Placeholder 3</div>'.
+				'</div>';
+	}
 ?>
 
 		</div>

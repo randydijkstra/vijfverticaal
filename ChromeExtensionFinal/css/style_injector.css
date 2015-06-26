@@ -7,14 +7,6 @@
 	padding: 20px;
 }
 
-#game-overlay h2{
-	text-align: center;
-	color: #2E9390;
-	width: 100%;
-	background-color: #000000;
-	padding: 5px 0;
-}
-
 #game-container {
 	background: #FFFFFF;
 	width: calc(100% - 40px);

@@ -52,6 +52,7 @@ a {
 	width: 100%;
 	max-width: 779px;
 	margin: 0 auto;
+	z-index: 9999;
 }
 
 .contentWrapper{
@@ -65,6 +66,41 @@ a {
 	max-width: 400px;
 	margin-left: 30px;
 	margin-bottom: 30px;
+}
+
+.contentWrapper #state2{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(233,233,233, 0.8);
+	width: 100%;
+	height: 100%;
+	padding-top: 25%;
+	padding-left: 25%;
+	overflow-y: none;
+}
+
+.contentWrapper #state2 h3{
+	color: #333;
+	width: 50%;
+	text-align: center;
+}
+
+.contentWrapper #state2 .option{
+	width: 50%;
+	border-radius: 5px;
+	padding: 10px;
+	background-color: #970306;
+	color: #fff;	
+	font-size: 20px;
+	font-weight: bold;	
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.contentWrapper #state2 .option:hover{
+	background-color: #750104;
 }
 
 #score-board {
@@ -125,16 +161,26 @@ a {
 .isGameWord.goodGuess {
 	
 	background-color: #26b55f;
-	color: #fff;
-	
+	color: #fff;	
+	/*color: #26b55f;*/
+	border-radius: 8px;
+	padding: 1px;
 }
 .isGameWord.wrongGuess {
-	
 	background-color: #b52644;
 	color: #fff;
-	
+	border-radius: 8px;
+	padding: 3px;
 }
-
+.isGameWord.s2goodGuess{
+	color: #fff;
+	border: solid 1px #04a33D;
+}
+.isGameWord.s2wrongGuess{
+	color: #fff;
+	background-color: #b52644;
+	border: solid 1px #970306;
+}
 .wordButton {
 	
 	background-color: #970306;
@@ -180,12 +226,23 @@ a {
 	-o-text-overflow: clip;
 	text-overflow: clip;
 	text-shadow: 2px 2px 0 #ffc10a , 4px 4px 0 rgba(43, 45, 45, 1) , 6px 6px 0 #ffc10a , 8px 8px 0 rgba(43, 45, 45, 1);
-  
+
 }
 
 #messageHolder.animation {
   -webkit-animation: animation 2800ms linear infinite both;
   animation: animation 2800ms linear infinite both;
+}
+
+/*responsive*/
+@media screen and (max-width: 600px) {
+    .mainHeader {
+        position: fixed;
+        max-height: 60px;
+    }
+    .articleTitle{
+    	margin-top: 60px;
+    }
 }
 
 /* Generated with Bounce.js. Edit at http://goo.gl/tM0rLB */
