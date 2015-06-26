@@ -138,7 +138,10 @@ function wordClicked(event, element, word) {
 		console.log(element);
 		console.log(word);
 		if (element.hasClass('goodGuess')){
-			console.log('Has goodGuess class!')
+			console.log('Has goodGuess class!');
+
+			//TODO onderstaande ombouwen naar array die checkt of woord al gebruikt is ;)
+
 			if(element.hasClass('s2goodGuess') || element.hasClass('s2wrongGuess')){
 				console.log("Already guessed this word");
 			}else{
@@ -153,21 +156,26 @@ function wordClicked(event, element, word) {
 				showMessage("Correct!", "green");
 				gameWordsCorrect_State2 += 1;
 				$('.goodGuess').each(function(index) {
-					if(this.word == element.text()){
-						this.addClass('s2goodGuess');
+					if($(this).text() == element.text()){
+						$(this).addClass('s2goodGuess');
 					}
 				});
 			}else{
 				showMessage("Helaas... fout!", "#970306");
 				$('.goodGuess').each(function(index) {
-					if(this.word == element.text()){
-						this.addClass('s2wrongGuess');
-						gameWordsWrong_State2 += 1;
+					console.log(this);
+					console.log(element.text());
+	
+					if($(this).text() == element.text()){
+						$(this).addClass('s2wrongGuess');
 					}
 				});
+				gameWordsWrong_State2 += 1;
 			}
 			$('#state2').fadeOut();
-			if((gameWordsCorrect_State2 + gameWordsWrong_State2) >= gameWordsCorrect_State1){
+			console.log(gameWordsCorrect_State2);
+			console.log(gameWordsWrong_State2);
+			if((gameWordsCorrect_State2 + gameWordsWrong_State2) >= correctWordsBeforeStateChange_State1){
 				startGame(3);
 			} 
 		}
@@ -249,9 +257,12 @@ function startFaseTwo(){
 	$('#score-board .left .wordButton').hide();
 	$('.goodGuess').css('color', '#26b55f');
 	
-	$('.option').on('click', function(e) {		
+	$('.option').on('click', function(e) {	
+		//console.log(e);	
 		wordClicked(e, $(this), $(this).text());		
 	});
+
+	showMessage("Fase 2!","#970306");
 }
 /*
 * 	----- End of State 2 stuff ---
