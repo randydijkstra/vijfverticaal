@@ -25,9 +25,9 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
       array = banWordsfromArray( array, bannedwords );
 
       for( var i = 0; i < array.length; i++ ) {
-        requests.push( JQ.ajax({url : wiktionary_query.replace('{{query}}',array[i]) } ));
+//implement in request: headers: { 'Api-User-Agent': 'MedlabSpeedReader/1.1' }
+        requests.push( JQ.ajax({type : "GET", headers : { "Api-User-Agent": "MedlabSpeedReader/1.1" }, url : wiktionary_query.replace('{{query}}',array[i]) } ));
       }
-
 
       JQ.when.apply( JQ, requests ).done( function () {
         

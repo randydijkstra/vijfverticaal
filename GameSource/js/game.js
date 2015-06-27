@@ -367,7 +367,7 @@ function startGame(state) {
 				
 	} else if (state == 3){
 		//alert("Gefeliciteerd! Spel uitgespeeld :)"); //TODO alert vervangen door sexy interface?
-		showMessage("Gefeliciteerd! U heeft het spel uitgespeeld");§
+		showMessage("Gefeliciteerd! U heeft het spel uitgespeeld");
 		console.log("End of game...");
 		gameState = 3;
 		//TODO: Laat eind scherm zien met scores
