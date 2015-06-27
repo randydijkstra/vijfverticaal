@@ -1,4 +1,7 @@
 <?php
+	header("Access-Control-Allow-Origin: *");
+//	header("Access-Control-Allow-Credentials: true");
+
 	ini_set('user_agent', 'MedlabSpeedReader/1.1 (http://www.basschuitema.nl/medialab/; randydijkstra92@gmail.com) BasedOnSuperLib/1.4');
 	ini_set('error_reporting', E_ALL);
 	ini_set('display_errors', 'On');  //On or Off

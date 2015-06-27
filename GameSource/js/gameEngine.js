@@ -2,7 +2,7 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
 
   function GameEngine ( options ) {
 
-    var wiktionary_query = 'http://nl.wiktionary.org/w/api.php?action=parse&prop=wikitext&page={{query}}&format=json';
+    var wiktionary_query = 'https://nl.wiktionary.org/w/api.php?action=parse&prop=wikitext&page={{query}}&format=json';
 
     var bannedwords = ['in','wij','aan','word','wordt','er','nog','bij','al','van','en','hun','hen','voor','achter','door','andere','veel','te','uit','ze','zij','hij','hem','in','die','naar','op','met','een','de','het','is','over','dit','dat','jij','je','jou','u','toen'];
     
@@ -26,7 +26,7 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
 
       for( var i = 0; i < array.length; i++ ) {
 //implement in request: headers: { 'Api-User-Agent': 'MedlabSpeedReader/1.1' }
-        requests.push( JQ.ajax({type : "GET", headers : { "Api-User-Agent": "MedlabSpeedReader/1.1" }, url : wiktionary_query.replace('{{query}}',array[i]) } ));
+        requests.push( JQ.ajax({type : "GET", crossDomain : true, dataType : "jsonp", headers : { "Api-User-Agent": "MedlabSpeedReader/1.1"}, url : wiktionary_query.replace('{{query}}',array[i]) } ));
       }
 
       JQ.when.apply( JQ, requests ).done( function () {
