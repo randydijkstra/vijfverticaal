@@ -75,6 +75,8 @@ function getRandomWord() {
 		clearInterval(gameTimer);
 		
 		var result = "";
+		console.log("Search tries = " + searchGameWordTries);
+
 		$.each(data, function(i, value){
   			//console.log('index: ' + i + ',value: ' + value);
   			if(value.hasSynonyms == true){
@@ -89,12 +91,11 @@ function getRandomWord() {
 						//console.log("Word to play in arraycheck: "+wordToPlay);
 						result = wordToPlay;
 				 	}else{
-				 		if(searchGameWordTries > 50){
+				 		if(searchGameWordTries > 69){
 				 			console.log("Cant find new word :(");
 				 			alert('Helaas, dit artikel is niet speelbaar...');
 				 			//result = false;
 				 		}else{
-							searchGameWordTries += 1;
 							result = "retryOnceAgain";
 				 		}
 				 	}
@@ -109,20 +110,19 @@ function getRandomWord() {
 		});
 		console.log("reslt = "+result);
 		//wordToPlay = result;
-		if(result == false){
+		if(result == false || result == ""){
 			//stuff should break here
 			console.log("Word =="+result);
+			searchGameWordTries += 1;
 			//alert('Er is iets mis gegaan, probeer het later nog eens..');
 			getRandomWord();
 		} else if(result == "retryOnceAgain"){
-			console.log("word should be retryOnceAgain, is: "+result);
+			console.log("word is retryOnceAgain: "+result);
+			searchGameWordTries += 1;
 			getRandomWord();
 		} else{
-			
 			gameTimer = setInterval(extraSecond, 1000);
-			
 			putWordInScoreboard(result);
-			
 		}
 	});
 
