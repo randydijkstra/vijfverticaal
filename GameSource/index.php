@@ -194,6 +194,19 @@
 					'<div id="option2" class="option">Placeholder 2</div>'.
 					'<div id="option3" class="option">Placeholder 3</div>'.
 				'</div>';
+
+		echo <<<EOT
+<div id="state3">
+	<h3>Bewaar je score!</h3>
+	<div id="question">
+	Wat is je naam ? <input id="name" type="text"></input>
+	<input type="button" value="Verstuur highscore" id="sendHighscore">
+	</div>
+	<div id="scores">
+		
+	</div>
+</div>
+EOT;
 	}
 ?>
 

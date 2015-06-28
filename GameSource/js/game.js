@@ -27,6 +27,66 @@ $(document).on('ready', function() {
 	
 });
 
+
+
+function addToHighscore( name, score )
+{
+	var highScore = localStorage.getItem( 'highscore' );
+	if( highScore == null ) {
+
+		highScore = [{
+			'name' : name,
+			'score' : score
+		}];
+
+	} else {
+		highScore = JSON.parse(highScore);
+		
+		highScore.push({
+			'name' : name,
+			'score' : score
+		});
+
+		highScore = highScore.sort(function(a, b){
+			if ( a.score > b.score ) {
+				return -1;
+			}
+
+			if ( a.score < b.score ) {
+				return 1;
+			}
+
+			return 0;
+		});
+	}
+
+	localStorage.setItem( 'highscore', JSON.stringify( highScore ) );
+	
+	return highScore;
+}
+
+function showHighscores()
+{
+	$("#state3").fadeIn();
+	$("#sendHighscore").on('click', function(){
+		var name = $("input#name").val();
+		
+		$("#question").fadeOut();
+		
+		var getalX = 500;
+		var highscores = addToHighscore( name, (gameWordsCorrect_State2 * getalX) - gameSeconds_State1 );
+		var $scores = $("#scores");
+
+		for(var i = 0; i < highscores.length; i++)
+		{
+			$scores.append('<div>'+highscores[i].name+'</div><div>'+highscores[i].score+'</div>');
+		}
+
+	});
+
+}
+
+
 function stripWord(word) {
 
 	word = $.trim(word);
@@ -382,6 +442,9 @@ function startGame(state) {
 		console.log("End of game...");
 		gameState = 3;
 		//TODO: Laat eind scherm zien met scores
+
+		showHighscores();
+
 	}
 
 	else {
