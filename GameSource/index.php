@@ -195,7 +195,7 @@
 					'<div id="option2" class="option">Placeholder 2</div>'.
 					'<div id="option3" class="option">Placeholder 3</div>'.
 				'</div>';
-		echo '</div>'
+		echo '</div>';
 
 		echo <<<EOT
 		<div class="gameOverlay state3">

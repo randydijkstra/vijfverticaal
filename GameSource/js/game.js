@@ -67,7 +67,7 @@ function addToHighscore( name, score )
 
 function showHighscores()
 {
-	$("#state3").fadeIn();
+	$(".state3").fadeIn();
 	$("#sendHighscore").on('click', function(){
 		var name = $("input#name").val();
 		
@@ -303,7 +303,7 @@ function wordClicked(event, element, word) {
 				});
 				gameWordsWrong_State2 += 1;
 			}
-			$('#state2').fadeOut();
+			$('.state2').fadeOut();
 			console.log(gameWordsCorrect_State2);
 			console.log(gameWordsWrong_State2);
 			if((gameWordsCorrect_State2 + gameWordsWrong_State2) >= correctWordsBeforeStateChange_State1){
@@ -363,7 +363,7 @@ function appendToOptions(word){
 	  					$('#option1').text(arrayOfWords[0]);
 	  					$('#option2').text(arrayOfWords[1]);
 	  					$('#option3').text(arrayOfWords[2]);
-  						$('#state2').fadeIn();
+  						$('.state2').fadeIn();
 	  				}
 	  			}else if(value.hasSynonyms == false){
 	  				console.log("hasSynonyms == false");
