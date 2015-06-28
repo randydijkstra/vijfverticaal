@@ -29,6 +29,15 @@
 	
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <div class="wrapper">
 		
 	<div class="mainHeader">
@@ -200,17 +209,31 @@
 		echo <<<EOT
 		<div class="gameOverlay state3">
 			<div id="state3">
-				<h3>Ranking</h3>
+
+				<h3 id="eindscore"></h3>
+
+				<p>
+				Je hebt het spel uitgespeeld! Je strafseconden van level 1 worden van je totale score uit level 2 afgetrokken. De score die je over hebt gehouden is je eindscore.
+				</p>
+
 				<div id="question">
 					<p>Wat is je naam ?</p> 
 					<input id="name" type="text"></input></br>
 					<input type="button" value="Verstuur highscore" id="sendHighscore">
 				</div>
-				<ol id="scores">
-					
-				</ol>
+				<ol id="scores"></ol>
 
 				<a href="index.php">Speel nog een spel.</a>
+				
+				<li>
+					<ul><a href="?article=http://s.ad.nl/4090087">TT: Bayern wil Douglas voor 35 miljoen, Advocaat aast op Fer</a>
+</ul>
+					<ul><a href="?article=http://s.ad.nl/4090293">Michael van Praag maakt komedie over Blatter</a>
+</ul>
+				</li>
+
+				<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
+
 			</div>
 		</div>
 EOT;

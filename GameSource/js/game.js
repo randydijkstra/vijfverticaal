@@ -67,7 +67,14 @@ function addToHighscore( name, score )
 
 function showHighscores()
 {
+
 	$(".state3").fadeIn();
+	var getalX = 75;
+	var $eindscore = $("#eindscore");
+	var thescore = parseInt((gameWordsCorrect_State2 * getalX) - gameSeconds_State1,10);
+	thescore = thescore < 0 ? 0 : thescore;
+	$eindscore.text("Eindscore: " + thescore);
+	
 	$("#sendHighscore").on('click', function(){
 		var name = $("input#name").val();
 		
@@ -78,6 +85,7 @@ function showHighscores()
 		thescore = thescore < 0 ? 0 : thescore;
 		var highscores = addToHighscore( name, (gameWordsCorrect_State2 * getalX) - gameSeconds_State1 );
 		var $scores = $("#scores");
+		
 
 		for(var i = 0; i < highscores.length; i++)
 		{
