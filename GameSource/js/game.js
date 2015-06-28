@@ -14,7 +14,7 @@ var gameWordToFind_State2 = ""; // Het woord dat de speler op 'dit' moment aan h
 var gameWordsCorrect_State1 = 0; // Hoeveel woorden zijn er correct geraden
 var gameWordsCorrect_State2 = 0; // Hoeveel woorden zijn er correct geraden
 var gameWordsWrong_State2 = 0; // Hoeveel woorden zijn er correct geraden
-var correctWordsBeforeStateChange_State1 = 5; // Woorden die goed moeten worden geraden voordat state 2 begint
+var correctWordsBeforeStateChange_State1 = 1; // Woorden die goed moeten worden geraden voordat state 2 begint
 var wordArray_State1 = new Array(); // Array bevat alle 'geraden' woorden
 var guessCounter = 0;
 var animationTimer_State1; // Niks aan doen, is een var om de timer later te cancelen
@@ -475,7 +475,7 @@ function extraSecond() {
 	outputText += "<br />";
 	outputText += gameWordsCorrect_State1 + " woord(en) gevonden";
 	
-	if (gameState == 2) {
+	if (gameState > 1) {
 		outputText += "<br />";
 		outputText += gameWordsCorrect_State2+ " woord(en) goed geraden";
 	}

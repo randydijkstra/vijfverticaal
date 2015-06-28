@@ -196,18 +196,19 @@
 				'</div>';
 
 		echo <<<EOT
-<div id="state3">
-	<h3>Ranking</h3>
-	<div id="question">
-	Wat is je naam ? <input id="name" type="text"></input>
-	<input type="button" value="Verstuur highscore" id="sendHighscore">
-	</div>
-	<ol id="scores">
-		
-	</ol>
+		<div id="state3">
+			<h3>Ranking</h3>
+			<div id="question">
+				<p>Wat is je naam ?</p> 
+				<input id="name" type="text"></input></br>
+				<input type="button" value="Verstuur highscore" id="sendHighscore">
+			</div>
+			<ol id="scores">
+				
+			</ol>
 
-	<a href="index.php">Speel nog een spel.</a>
-</div>
+			<a href="index.php">Speel nog een spel.</a>
+		</div>
 EOT;
 	}
 ?>
