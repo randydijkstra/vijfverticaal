@@ -73,7 +73,7 @@ function showHighscores()
 		
 		$("#question").fadeOut();
 		
-		var getalX = 500;
+		var getalX = 75;
 		var thescore = (gameWordsCorrect_State2 * getalX) - gameSeconds_State1;
 		thescore = thescore < 0 ? 0 : thescore;
 		var highscores = addToHighscore( name, (gameWordsCorrect_State2 * getalX) - gameSeconds_State1 );
@@ -274,7 +274,7 @@ function wordClicked(event, element, word) {
 		}else if (element.hasClass('option')) {
 			if(element.text() == gameWordToFind_State2){
 				console.log("corrent :)");
-				showMessage("Correct!", "green");
+				showMessage("Correct, +75 punten", "green");
 				gameWordsCorrect_State2 += 1;
 
 				$('.goodGuess').each(function(index) {
