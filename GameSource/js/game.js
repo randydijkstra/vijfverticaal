@@ -79,7 +79,7 @@ function showHighscores()
 
 		for(var i = 0; i < highscores.length; i++)
 		{
-			$scores.append('<div>'+highscores[i].name+'</div><div>'+highscores[i].score+'</div>');
+			$scores.append('<li><span>'+highscores[i].name+'</span><span style="margin-left:20px">'+highscores[i].score+'</span></li>');
 		}
 
 	});

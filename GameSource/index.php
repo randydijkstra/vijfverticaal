@@ -197,14 +197,14 @@
 
 		echo <<<EOT
 <div id="state3">
-	<h3>Bewaar je score!</h3>
+	<h3>Ranking</h3>
 	<div id="question">
 	Wat is je naam ? <input id="name" type="text"></input>
 	<input type="button" value="Verstuur highscore" id="sendHighscore">
 	</div>
-	<div id="scores">
+	<ol id="scores">
 		
-	</div>
+	</ol>
 </div>
 EOT;
 	}
