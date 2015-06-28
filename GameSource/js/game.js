@@ -91,7 +91,7 @@ function getRandomWord() {
 				 	}else{
 				 		if(searchGameWordTries > 50){
 				 			console.log("Cant find new word :(");
-				 			alert('Er is iets mis gegaan, probeer het later nog eens..');
+				 			alert('Helaas, dit artikel is niet speelbaar...');
 				 			//result = false;
 				 		}else{
 							searchGameWordTries += 1;
