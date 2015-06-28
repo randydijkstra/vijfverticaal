@@ -186,6 +186,7 @@
 		}
 		
 	}
+	
 	if ($isPlayingGame) {
 		echo 	'<div id="state2">'.
 					'<h3>Wat was het woord in het artikel?</h3>'.
@@ -209,7 +210,7 @@
 		echo '		
 			<div id="score-board">
 				<div class="left">
-					<div class="wordButton"></div>
+					<div class="wordButton">Laden..</div>
 				</div>
 				<div class="right">
 					<div class="helpText">Zoek het woord in de tekst!</div>

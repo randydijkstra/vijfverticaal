@@ -70,6 +70,10 @@ function getRandomWord() {
 	console.log("word to check: "+wordToPlay)
 	
 	gEngine.run([wordToPlay], function(data){
+		
+		$('#score-board .left .wordButton').text('Woord laden..');
+		clearInterval(gameTimer);
+		
 		var result = "";
 		$.each(data, function(i, value){
   			//console.log('index: ' + i + ',value: ' + value);
@@ -85,7 +89,7 @@ function getRandomWord() {
 						//console.log("Word to play in arraycheck: "+wordToPlay);
 						result = wordToPlay;
 				 	}else{
-				 		if(searchGameWordTries > 10){
+				 		if(searchGameWordTries > 70){
 				 			console.log("Cant find new word :(");
 				 			result = false;
 				 		}else{
@@ -107,11 +111,16 @@ function getRandomWord() {
 		if(result == false){
 			//stuff should break here
 			console.log("Word =="+result);
-		}else if(result == "retryOnceAgain"){
+			alert('Er is iets mis gegaan, probeer het later nog eens..');
+		} else if(result == "retryOnceAgain"){
 			console.log("word should be retryOnceAgain, is: "+result);
 			getRandomWord();
-		}else{
+		} else{
+			
+			gameTimer = setInterval(extraSecond, 1000);
+			
 			putWordInScoreboard(result);
+			
 		}
 	});
 

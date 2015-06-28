@@ -25,14 +25,14 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
       array = banWordsfromArray( array, bannedwords );
 
       for( var i = 0; i < array.length; i++ ) {
-//implement in request: headers: { 'Api-User-Agent': 'MedlabSpeedReader/1.1' }
-        requests.push( JQ.ajax({type : "GET", crossDomain : true, dataType : "jsonp", headers : { "Api-User-Agent": "MedlabSpeedReader/1.1"}, url : wiktionary_query.replace('{{query}}',array[i]) } ));
+        requests.push( JQ.ajax({type : "GET", crossDomain : true, dataType : "jsonp", headers : { "Api-User-Agent": "MedlabSpeedReader/1.1"}, url : wiktionary_query.replace('{{query}}', encodeURIComponent(array[i])) })  );
       }
 
       JQ.when.apply( JQ, requests ).done( function () {
         
         JQ.each( requests, function ( n, data ) {
-          parse = parser(data.responseJSON);
+	        
+          parse = parser(data.responseJSON, data[1]);
           if(!parse.error){
             if(parse.syn.length > 0)
             {
@@ -43,12 +43,11 @@ var GameEngine = ( function( JQ, wiktionaryParser, window, undefined ) {
               });
             } else {
               words.push({
-                word : data.responseJSON.parse.title,
+                word : "retryOnceAgain",
                 hasSynonyms : false
               });
             }
           }
-
         });
 
         // run callback
