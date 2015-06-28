@@ -19,6 +19,11 @@ var WiktionaryParser = ( function( window, undefined ) {
 
 
     this.parse = function ( json ) {
+      
+      if(json.error)
+      {
+        return { error : json.error };
+      }
 
       var text = json.parse.wikitext['*'];
       var output = {};      
