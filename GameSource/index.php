@@ -188,28 +188,33 @@
 	}
 	
 	if ($isPlayingGame) {
+		echo '<div class="gameOverlay state2">';
 		echo 	'<div id="state2">'.
 					'<h3>Wat was het woord in het artikel?</h3>'.
 					'<div id="option1" class="option">Placeholder 1</div>'.
 					'<div id="option2" class="option">Placeholder 2</div>'.
 					'<div id="option3" class="option">Placeholder 3</div>'.
 				'</div>';
+		echo '</div>'
 
 		echo <<<EOT
-		<div id="state3">
-			<h3>Ranking</h3>
-			<div id="question">
-				<p>Wat is je naam ?</p> 
-				<input id="name" type="text"></input></br>
-				<input type="button" value="Verstuur highscore" id="sendHighscore">
-			</div>
-			<ol id="scores">
-				
-			</ol>
+		<div class="gameOverlay state3">
+			<div id="state3">
+				<h3>Ranking</h3>
+				<div id="question">
+					<p>Wat is je naam ?</p> 
+					<input id="name" type="text"></input></br>
+					<input type="button" value="Verstuur highscore" id="sendHighscore">
+				</div>
+				<ol id="scores">
+					
+				</ol>
 
-			<a href="index.php">Speel nog een spel.</a>
+				<a href="index.php">Speel nog een spel.</a>
+			</div>
 		</div>
 EOT;
+
 	}
 ?>
 

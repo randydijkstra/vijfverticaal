@@ -71,7 +71,7 @@ a {
 .contentWrapper #state2{
 	display: none;
 	position: fixed;
-	top: calc(0% - 138px);
+	top: calc(50% - 138px);
 	left: 0;
 	background: rgba(233,233,233, 0.9);
 	width: 100%;
@@ -106,7 +106,7 @@ a {
 .contentWrapper #state3{
 	display: none;
 	position: fixed;
-	top: 120px;
+	top: 75px;
 	left: 0;
 	background: #970306;
 	width: 100%;
@@ -118,7 +118,7 @@ a {
 .contentWrapper #state3 h3{
 	color: #FFF;
 	width: 50%;
-	font-size: 25px;
+
 	text-align: center;
 }
 
