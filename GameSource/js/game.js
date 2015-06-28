@@ -89,9 +89,10 @@ function getRandomWord() {
 						//console.log("Word to play in arraycheck: "+wordToPlay);
 						result = wordToPlay;
 				 	}else{
-				 		if(searchGameWordTries > 70){
+				 		if(searchGameWordTries > 50){
 				 			console.log("Cant find new word :(");
-				 			result = false;
+				 			alert('Er is iets mis gegaan, probeer het later nog eens..');
+				 			//result = false;
 				 		}else{
 							searchGameWordTries += 1;
 							result = "retryOnceAgain";
@@ -111,7 +112,8 @@ function getRandomWord() {
 		if(result == false){
 			//stuff should break here
 			console.log("Word =="+result);
-			alert('Er is iets mis gegaan, probeer het later nog eens..');
+			//alert('Er is iets mis gegaan, probeer het later nog eens..');
+			getRandomWord();
 		} else if(result == "retryOnceAgain"){
 			console.log("word should be retryOnceAgain, is: "+result);
 			getRandomWord();
