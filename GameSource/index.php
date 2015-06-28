@@ -205,6 +205,8 @@
 	<ol id="scores">
 		
 	</ol>
+
+	<a href="index.php">Speel nog een spel.</a>
 </div>
 EOT;
 	}

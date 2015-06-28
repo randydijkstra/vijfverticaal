@@ -74,6 +74,8 @@ function showHighscores()
 		$("#question").fadeOut();
 		
 		var getalX = 500;
+		var thescore = (gameWordsCorrect_State2 * getalX) - gameSeconds_State1;
+		thescore = thescore < 0 ? 0 : thescore;
 		var highscores = addToHighscore( name, (gameWordsCorrect_State2 * getalX) - gameSeconds_State1 );
 		var $scores = $("#scores");
 
