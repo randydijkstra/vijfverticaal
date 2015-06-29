@@ -211,29 +211,43 @@
 			<div id="state3">
 
 				<h3 id="eindscore"></h3>
+				<div id="share">
+					<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>	
+				</div>
 
 				<p>
-				Je hebt het spel uitgespeeld! Je strafseconden van level 1 worden van je totale score uit level 2 afgetrokken. De score die je over hebt gehouden is je eindscore.
+					Je hebt het spel uitgespeeld! 
+				</p>
+				<p>
+					Je strafseconden van level 1 worden van je totale score uit level 2 afgetrokken. De score die je over hebt gehouden is je eindscore.
 				</p>
 
+				<h3 id="ranking">Ranking</h3>
+
 				<div id="question">
-					<p>Wat is je naam ?</p> 
+					<h4>Wat is je naam ?</h4> 
 					<input id="name" type="text"></input></br>
-					<input type="button" value="Verstuur highscore" id="sendHighscore">
+					<a href="#" class="sendHighscore" id="sendHighscore">Verstuur highscore</a>
 				</div>
+
+
 				<ol id="scores"></ol>
+					
+				<div id="suggestion">
+				 <p>
+				 	<a href="index.php">Nog een spelletje spelen?</a>
+				 </p> 
+				</div>
 
-				<a href="index.php">Speel nog een spel.</a>
+
+				<h4>Suggesties:</h4>
+				<ul>
+					<li><a href="?article=http://s.ad.nl/4090087">TT: Bayern wil Douglas voor 35 miljoen, Advocaat aast op Fer</a>
+</li>
+					<li><a href="?article=http://s.ad.nl/4090293">Michael van Praag maakt komedie over Blatter</a>
+</li>
+				</ul>
 				
-				<li>
-					<ul><a href="?article=http://s.ad.nl/4090087">TT: Bayern wil Douglas voor 35 miljoen, Advocaat aast op Fer</a>
-</ul>
-					<ul><a href="?article=http://s.ad.nl/4090293">Michael van Praag maakt komedie over Blatter</a>
-</ul>
-				</li>
-
-				<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
-
 			</div>
 		</div>
 EOT;

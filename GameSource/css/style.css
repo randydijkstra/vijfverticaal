@@ -76,6 +76,7 @@ a {
 	background: rgba(233,233,233, 0.9);	
 	width: 100%;
 	height: 100%;	
+	overflow-y:auto;
 }
 
 /*
@@ -117,10 +118,114 @@ a {
 
 
 .gameOverlay p {
-	
-	color: #000;
+	color: #333;
+}
+
+.gameOverlay #state3 p{
+	margin: 8px 5px;
+}
+
+.gameOverlay #state3{
+	padding: 10px 15px;
+	border: solid 3px #970306;
+	border-radius: 9px;
+}
+
+.gameOverlay #state3 #ranking, .gameOverlay #state3 #scores{
+	display:none;
+}
+
+
+.gameOverlay #state3 #question{
+	width: 100%;
+	text-align: center;
+}
+.gameOverlay #state3 #question input{
+	width: 150px;
+	margin: 0 auto;
+	margin-bottom: 5px;
+}
+.gameOverlay #state3 #sendHighscore{
 	
 }
+
+#share{
+	width: 55px;
+	margin: 0 auto;
+}
+
+.sendHighscore, #suggestion a {
+	text-align: center;
+	-moz-box-shadow:inset 0px -3px 7px 0px #cc0812;
+	-webkit-box-shadow:inset 0px -3px 7px 0px #cc0812;
+	box-shadow:inset 0px -3px 7px 0px #cc0812;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #a80709), color-stop(1, #d10003));
+	background:-moz-linear-gradient(top, #a80709 5%, #d10003 100%);
+	background:-webkit-linear-gradient(top, #a80709 5%, #d10003 100%);
+	background:-o-linear-gradient(top, #a80709 5%, #d10003 100%);
+	background:-ms-linear-gradient(top, #a80709 5%, #d10003 100%);
+	background:linear-gradient(to bottom, #a80709 5%, #d10003 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a80709', endColorstr='#d10003',GradientType=0);
+	background-color:#a80709;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	font-weight:bold;
+	padding:8px 26px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #170202;
+}
+.sendHighscore:hover, #suggestion a:hover{
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #d10003), color-stop(1, #a80709));
+	background:-moz-linear-gradient(top, #d10003 5%, #a80709 100%);
+	background:-webkit-linear-gradient(top, #d10003 5%, #a80709 100%);
+	background:-o-linear-gradient(top, #d10003 5%, #a80709 100%);
+	background:-ms-linear-gradient(top, #d10003 5%, #a80709 100%);
+	background:linear-gradient(to bottom, #d10003 5%, #a80709 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d10003', endColorstr='#a80709',GradientType=0);
+	background-color:#d10003;
+}
+.sendHighscore:active, #suggestion a:active {
+	position:relative;
+	top:1px;
+}
+
+.gameOverlay #state3 #scores{
+	max-width: 200px;
+	margin: 0 auto;
+}
+.gameOverlay #state3 #scores li{
+	width: 100%;
+}
+
+.gameOverlay #state3 #suggestion{
+	margin: 15px 0;
+	width: 100%;
+	text-align: center;
+}
+
+.gameOverlay #state3 #ranking{
+	margin-bottom: 10px;
+}
+
+
+
+
+.gameOverlay #state3 h4{
+	font-weight: bold;
+	margin: 20px 0 10px 0;
+}
+
+#share{
+	margin: 0 auto;
+	text-align: center;
+}
+
 
 #score-board {
 	

@@ -77,9 +77,7 @@ function showHighscores()
 	
 	$("#sendHighscore").on('click', function(){
 		var name = $("input#name").val();
-		
-		$("#question").fadeOut();
-		
+
 		var getalX = 75;
 		var thescore = (gameWordsCorrect_State2 * getalX) - gameSeconds_State1;
 		thescore = thescore < 0 ? 0 : thescore;
@@ -91,6 +89,11 @@ function showHighscores()
 		{
 			$scores.append('<li><span>'+highscores[i].name+'</span><span style="margin-left:20px">'+highscores[i].score+'</span></li>');
 		}
+
+		$("#question").fadeOut(function(){
+			$("#ranking").fadeIn();
+			$("#scores").fadeIn();
+		});
 
 	});
 
